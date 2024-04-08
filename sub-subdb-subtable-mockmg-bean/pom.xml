@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>sub-subdb-subtable-mockMG</artifactId>
+    <artifactId>sub-subdb-subtable-mockmg-bean</artifactId>
 
 
 </project>
