@@ -9,6 +9,7 @@
         <module>sub-table-read-write</module>
         <module>sub-db-table</module>
         <module>sub-db-table-read-write</module>
+        <module>sub-subdb-subtable-mockMG</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -67,6 +68,22 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
         </dependency>
+
+        <!-- fastjson -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.58</version>
+        </dependency>
+
+        <!-- 工具类 -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.8</version>
+        </dependency>
+
+
     </dependencies>
 
     <build>

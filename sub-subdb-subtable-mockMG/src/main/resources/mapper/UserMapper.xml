@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.oujiong.mapper.UserMapper">
+    <resultMap id="BaseResultMap" type="com.oujiong.entity.User">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="sex" jdbcType="VARCHAR" property="sex"/>
+        <result column="age" jdbcType="INTEGER" property="age"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="status" jdbcType="INTEGER" property="status"/>
+        <result column="birthdayMonth" jdbcType="INTEGER" property="birthdayMonth"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id, name, sex, age, create_time, update_time, status, birthdayMonth
+    </sql>
+    <select id="selectAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from t_user_
+    </select>
+    <select id="query" resultType="com.oujiong.entity.User">
+      select
+      <include refid="Base_Column_List"/>
+      from t_user_ where birthdayMonth=#{birthdayMonth} and age=#{age}
+    </select>
+
+
+    <delete id="deleteAllUser">
+        delete from t_user_ limit 10000
+    </delete>
+
+    <insert id="insertForeach" parameterType="java.util.List" useGeneratedKeys="false">
+        insert into t_user_ (id, name, sex,
+        age, create_time, update_time,
+        status,birthdayMonth)
+        values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (#{item.id,jdbcType=BIGINT}, #{item.name,jdbcType=VARCHAR}, #{item.sex,jdbcType=VARCHAR},
+            #{item.age,jdbcType=INTEGER}, #{item.createTime,jdbcType=TIMESTAMP}, #{item.updateTime,jdbcType=TIMESTAMP},
+            #{item.status,jdbcType=INTEGER}, #{item.birthdayMonth,jdbcType=INTEGER})
+        </foreach>
+    </insert>
+</mapper>
