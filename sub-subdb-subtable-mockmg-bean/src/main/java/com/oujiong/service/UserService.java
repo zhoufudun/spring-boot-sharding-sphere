@@ -1,6 +1,6 @@
 package com.oujiong.service;
 
-import com.oujiong.entity.User;
+import com.oujiong.model.User;
 
 import java.util.List;
 

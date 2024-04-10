@@ -1,8 +1,9 @@
-package com.oujiong.entity;
+package com.oujiong.model;
 
 import lombok.Data;
 
 import java.util.Date;
+
 
 /**
  * user表

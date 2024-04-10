@@ -2,7 +2,7 @@ package com.oujiong.controller;
 
 
 import com.google.common.collect.Lists;
-import com.oujiong.entity.User;
+import com.oujiong.model.User;
 import com.oujiong.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,10 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.PostConstruct;
-import java.util.Collection;
 import java.util.List;
 import java.util.Random;
-import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 

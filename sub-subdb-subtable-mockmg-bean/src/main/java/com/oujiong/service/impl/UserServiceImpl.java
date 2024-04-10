@@ -1,6 +1,6 @@
 package com.oujiong.service.impl;
 
-import com.oujiong.entity.User;
+import com.oujiong.model.User;
 import com.oujiong.mapper.UserMapper;
 import com.oujiong.service.UserService;
 import lombok.extern.slf4j.Slf4j;

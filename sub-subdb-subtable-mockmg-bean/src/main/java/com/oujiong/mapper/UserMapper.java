@@ -1,7 +1,7 @@
 package com.oujiong.mapper;
 
 
-import com.oujiong.entity.User;
+import com.oujiong.model.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
