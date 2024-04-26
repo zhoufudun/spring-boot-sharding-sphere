@@ -52,12 +52,14 @@ public class config {
     public DataSource dataSource() throws SQLException {
         ShardingRuleConfiguration shardingRuleConfig = new ShardingRuleConfiguration();
         shardingRuleConfig.getTableRuleConfigs().add(getUserTableRuleConfiguration());
+//        shardingRuleConfig.getTableRuleConfigs().add(getOrderTableRuleConfiguration());
+
 //        shardingRuleConfig.getBindingTableGroups().add("t_user");
 //        shardingRuleConfig.getBroadcastTables().add("t_config");
 //      //根据年龄分库 一共分为2个库
-        shardingRuleConfig.setDefaultDatabaseShardingStrategyConfig(new InlineShardingStrategyConfiguration("age", "subdb${(age % 2)+1}"));
+//        shardingRuleConfig.setDefaultDatabaseShardingStrategyConfig(new InlineShardingStrategyConfiguration("age", "subdb${(age % 2)+1}"));
         //根据ID分表  一共分为2张表
-        shardingRuleConfig.setDefaultTableShardingStrategyConfig(new ComplexShardingStrategyConfiguration("birthdayMonth,age", new MyTableKeysShardingAlgorithm()));
+//        shardingRuleConfig.setDefaultTableShardingStrategyConfig(new ComplexShardingStrategyConfiguration("birthdayMonth,age", new MyTableKeysShardingAlgorithm()));
         return ShardingDataSourceFactory.createDataSource(createDataSourceMap(), shardingRuleConfig, new Properties());
     }
 
@@ -66,9 +68,29 @@ public class config {
         return result;
     }
 
+    /**
+     * 定义user表的分库分表键和分库分表算法
+     * @return
+     */
     TableRuleConfiguration getUserTableRuleConfiguration() {
         TableRuleConfiguration result = new TableRuleConfiguration("t_user_", "subdb${1..2}.t_user_${1..2}_${0..1}");
 //        result.setKeyGeneratorConfig(getKeyGeneratorConfiguration());
+        //根据年龄分库 一共分为2个库
+        result.setDatabaseShardingStrategyConfig(new InlineShardingStrategyConfiguration("age", "subdb${(age % 2)+1}"));
+        //根据ID分表  一共分为2张表
+        result.setTableShardingStrategyConfig(new ComplexShardingStrategyConfiguration("birthdayMonth,age", new MyTableKeysShardingAlgorithm()));
+        return result;
+    }
+    /**
+     * 定义order表的分库分表键和分库分表算法
+     * @return
+     */
+    TableRuleConfiguration getOrderTableRuleConfiguration() {
+        TableRuleConfiguration result = new TableRuleConfiguration("t_order_", "subdb${1..2}.t_order_${1..2}_${0..1}");
+        //根据年龄分库 一共分为2个库
+        result.setDatabaseShardingStrategyConfig(new InlineShardingStrategyConfiguration("order_id", "subdb${(age % 2)+1}"));
+        //根据ID分表  一共分为2张表
+        result.setTableShardingStrategyConfig(new ComplexShardingStrategyConfiguration("order_id", new MyTableKeysShardingAlgorithm()));
         return result;
     }
 
