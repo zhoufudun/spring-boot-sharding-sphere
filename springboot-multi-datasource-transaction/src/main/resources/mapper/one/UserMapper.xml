@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.test.mapper.one.UserMapper">
-  <resultMap id="BaseResultMap" type="com.test.mapper.one.User">
+  <resultMap id="BaseResultMap" type="com.oujiong.mapper.one.User">
     <!--@mbg.generated-->
     <!--@Table t_user-->
     <id column="tb_user_id" jdbcType="INTEGER" property="userId" />
@@ -25,14 +25,14 @@
     delete from t_user
     where tb_user_id = #{userId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" keyColumn="tb_user_id" keyProperty="userId" parameterType="com.test.mapper.one.User" useGeneratedKeys="true">
+  <insert id="insert" keyColumn="tb_user_id" keyProperty="userId" parameterType="com.oujiong.mapper.one.User" useGeneratedKeys="true">
     <!--@mbg.generated-->
     insert into t_user (tb_user_name, tb_password, tb_phone
       )
     values (#{userName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{tbPhone,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" keyColumn="tb_user_id" keyProperty="userId" parameterType="com.test.mapper.one.User" useGeneratedKeys="true">
+  <insert id="insertSelective" keyColumn="tb_user_id" keyProperty="userId" parameterType="com.oujiong.mapper.one.User" useGeneratedKeys="true">
     <!--@mbg.generated-->
     insert into t_user
     <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -58,7 +58,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.test.mapper.one.User">
+  <update id="updateByPrimaryKeySelective" parameterType="com.oujiong.mapper.one.User">
     <!--@mbg.generated-->
     update t_user
     <set>
@@ -74,7 +74,7 @@
     </set>
     where tb_user_id = #{userId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.test.mapper.one.User">
+  <update id="updateByPrimaryKey" parameterType="com.oujiong.mapper.one.User">
     <!--@mbg.generated-->
     update t_user
     set tb_user_name = #{userName,jdbcType=VARCHAR},
